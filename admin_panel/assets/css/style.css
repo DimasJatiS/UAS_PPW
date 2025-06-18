@@ -1,0 +1,328 @@
+/* File: uas/admin_panel/assets/css/admin_style.css */
+
+        :root {
+            --primary-font: 'Montagu Slab', serif;
+            --secondary-font: 'Inter', sans-serif;
+            --bg-main: #FAF8F5; /* Off-white, warm like index.php */
+            --bg-sidebar: #FFFFFF; /* White sidebar, with shadow */
+            --text-dark: #4A3F35; /* Dark brown-gray, softer than black */
+            --text-light: #7D6E63; /* Lighter brown-gray for secondary text */
+            --accent-color: #BFA997; /* Bloomarie's signature beige/brown */
+            --accent-hover: #A99483; /* Darker accent for hover */
+            --border-color: #E0D8D1; /* Soft border color */
+            --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+            --card-hover-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            --border-radius-md: 12px; /* Medium rounded corners */
+            --border-radius-lg: 20px; /* Large rounded corners */
+        }
+
+        body {
+            background-color: var(--bg-main);
+            font-family: var(--secondary-font);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .sidebar {
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 260px;
+            padding: 1.5rem 0;
+            background-color: var(--bg-sidebar);
+            box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+        }
+        .sidebar .site-title {
+            font-family: 'Cooper Black', serif; /* Match index.php title */
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            padding: 0.5rem 1rem;
+            color: var(--accent-color);
+        }
+        .sidebar .nav-links {
+            flex-grow: 1;
+            overflow-y: auto; /* For many links */
+        }
+        .sidebar a {
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex; /* For icon alignment */
+            align-items: center;
+            padding: 14px 25px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.25s ease;
+            border-left: 4px solid transparent; /* For active state indicator */
+        }
+        .sidebar a:hover {
+            color: var(--accent-hover);
+            background-color: rgba(191, 169, 151, 0.08); /* Subtle hover bg */
+            border-left-color: var(--accent-hover);
+        }
+        .sidebar a.active {
+            color: var(--accent-color);
+            background-color: rgba(191, 169, 151, 0.12);
+            border-left-color: var(--accent-color);
+            font-weight: 600;
+        }
+        .sidebar a i {
+            margin-right: 15px;
+            width: 20px;
+            text-align: center;
+            font-size: 1.1em;
+            opacity: 0.8;
+        }
+        .sidebar .logout-link a {
+            margin-top: auto; /* Push logout to bottom */
+            border-top: 1px solid var(--border-color);
+            padding-top: 1rem;
+            margin: 1rem 1rem 0 1rem; /* Add some margin around logout */
+            border-radius: var(--border-radius-md);
+        }
+        .sidebar .logout-link a:hover {
+            background-color: #ffebee; /* Light red for logout hover */
+            color: #c62828; /* Darker red text */
+            border-left-color: #c62828;
+        }
+
+
+        .main-content {
+            margin-left: 260px;
+            padding: 2rem;
+        }
+        .admin-navbar {
+            background-color: #FFFFFF;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--card-shadow);
+            padding: 1rem 1.5rem;
+        }
+        .admin-navbar h4 {
+            font-family: var(--primary-font);
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+        .admin-navbar .navbar-text {
+            color: var(--text-light);
+        }
+
+        .stat-card {
+            background-color: #FFFFFF;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            overflow: hidden; /* To contain pseudo-elements if any */
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-hover-shadow);
+        }
+        .stat-card .card-body {
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .stat-card .stat-content .card-title {
+            font-family: var(--secondary-font);
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-light);
+            margin-bottom: 0.3rem;
+            text-transform: uppercase;
+        }
+        .stat-card .stat-content .card-text {
+            font-family: var(--primary-font);
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            line-height: 1.2;
+        }
+        .stat-card .card-icon i {
+            font-size: 2.8rem;
+            opacity: 0.2;
+            color: var(--text-dark); /* Make icons subtle */
+        }
+        .stat-card .card-footer {
+            background-color: transparent; /* Cleaner footer */
+            border-top: 1px solid var(--border-color);
+            font-size: 0.85rem;
+            color: var(--text-light);
+            padding: 0.75rem 1.5rem;
+        }
+        /* Specific icon colors for stat cards */
+        .stat-card.users .card-icon i { color: #3498db; } /* Blue */
+        .stat-card.products .card-icon i { color: #2ecc71; } /* Green */
+        .stat-card.orders .card-icon i { color: #e67e22; } /* Orange */
+        .stat-card.messages .card-icon i { color: #9b59b6; } /* Purple */
+
+
+        .data-table-card {
+            background-color: #FFFFFF;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--card-shadow);
+            overflow: hidden; /* For rounded table corners */
+        }
+        .data-table-card .card-header {
+            background-color: transparent;
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 1.5rem;
+        }
+        .data-table-card .card-header h5 {
+            font-family: var(--primary-font);
+            font-weight: 500;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 0;
+        }
+        .data-table-card .card-body {
+            padding: 0; /* Table will have its own padding */
+        }
+        .table {
+            margin-bottom: 0; /* Remove default Bootstrap margin */
+            color: var(--text-dark);
+        }
+        .table th {
+            font-family: var(--secondary-font);
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            border-bottom: 2px solid var(--border-color);
+            border-top: none; /* Cleaner look */
+            padding: 0.9rem 1.5rem;
+        }
+        .table td {
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            padding: 0.9rem 1.5rem;
+        }
+        .table-hover tbody tr:hover {
+            background-color: rgba(191, 169, 151, 0.05); /* Subtle hover for table rows */
+        }
+        .table .badge {
+            font-size: 0.8em;
+            font-weight: 500;
+            padding: 0.4em 0.7em;
+            border-radius: var(--border-radius-md);
+        }
+        .table .btn-sm {
+            font-size: 0.8rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: var(--border-radius-md);
+        }
+        .btn-outline-primary { border-color: var(--accent-color); color: var(--accent-color); }
+        .btn-outline-primary:hover { background-color: var(--accent-color); color: white; }
+        /* ... other btn outline colors if needed ... */
+
+        .text-muted.fst-italic { color: var(--text-light) !important; }
+        .sidebar .view-site-link a { /* Style khusus untuk link "Lihat Situs" */
+    border-top: 1px solid var(--border-color);
+    margin-top: 0.5rem; /* Sedikit jarak dari menu utama */
+}
+.sidebar .view-site-link a:hover { /* Style hover untuk "Lihat Situs" */
+    background-color: #e8f5e9; /* Warna hijau muda lembut */
+    color: #2e7d32; /* Warna hijau tua */
+    border-left-color: #2e7d32;
+}
+/* Form di Admin Panel */
+.admin-form .form-group {
+    margin-bottom: 1.2rem;
+}
+.admin-form .form-label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+    color: #495057;
+    font-size: 0.9rem;
+}
+.admin-form .form-control { /* Style dasar untuk input, select, textarea */
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.admin-form .form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+.admin-form textarea.form-control {
+    min-height: 100px; /* Tinggi minimal untuk textarea */
+}
+.admin-form .form-check-input { margin-top: 0.3rem; } /* Alignment checkbox/radio */
+.admin-form .form-check-label { margin-bottom: 0; }
+
+.admin-form .btn-primary-admin { /* Tombol submit utama di form admin */
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+    border-radius: 0.25rem;
+    transition: background-color .15s ease-in-out, border-color .15s ease-in-out;
+}
+.admin-form .btn-primary-admin:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+.admin-form .btn-secondary-admin { /* Tombol batal/kembali */
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+    border-radius: 0.25rem;
+}
+.admin-form .btn-secondary-admin:hover { background-color: #5a6268; border-color: #545b62; }
+
+
+.footer-admin { /* Footer di dalam .main-content-admin */
+    text-align: center;
+    margin-top: auto; /* Mendorong footer ke bawah */
+    padding: 1rem;
+    background-color: #e9ecef;
+    border-top: 1px solid #dee2e6;
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
+/* Responsive untuk Admin Panel */
+@media (max-width: 767.98px) {
+    .sidebar-admin {
+        width: 100%;
+        height: auto;
+        position: relative; /* Tidak fixed lagi */
+        z-index: auto;
+    }
+    .main-content-admin {
+        margin-left: 0;
+        width: 100%;
+    }
+    .sidebar-admin .nav-admin .nav-item a {
+        text-align: center;
+        border-left: none;
+        border-bottom: 1px solid #4f5962;
+    }
+    .sidebar-admin .nav-admin .nav-item a.active {
+        border-bottom-color: #007bff;
+    }
+    .header-admin {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .header-admin .user-info-admin { margin-bottom: 0.5rem; }
+}
